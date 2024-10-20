@@ -1,0 +1,2 @@
+class NRModel:
+    pass
