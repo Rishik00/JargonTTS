@@ -4,6 +4,8 @@ from typing import List
 
 from model_utils import memory_management_fn, get_detailed_memory_usage
 from inference_model import TTSModelForAudioInference
+from dbs import SQLiteDBStore
+
 
 def get_audio_samples(texts: List[str], batch_size: int = 1):
 
@@ -51,3 +53,6 @@ def get_audio_samples(texts: List[str], batch_size: int = 1):
         
     except Exception as e:
         print(f"Error in get_audio_samples: {str(e)}")
+
+def main():
+    pass
