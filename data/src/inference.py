@@ -77,10 +77,10 @@ if __name__ == "__main__":
         print(f"Error: The file {args.text_file} does not exist.")
         exit(1)
 
-    # print("Initializing the TTS pipeline...")
+    print("Initializing the TTS pipeline...")
     model = load_model(model_name=args.model, device=args.device)
 
-    # print("Loading speaker embeddings...")
+    print("Loading speaker embeddings...")
     speaker_embeds = load_speaker_embeddings(name="Matthijs/cmu-arctic-xvectors", idx=args.speaker_index, device=args.device)
 
     print("Starting inference...")
@@ -94,6 +94,6 @@ if __name__ == "__main__":
             for idx, text in enumerate(input_text):
                 print(f"Processing line {idx + 1}: {text}")
                 # Uncomment the following line to run TTS once model and embeddings are loaded
-                # take_inference(num=idx + 1, model=model, text=text, speaker_embedding=speaker_embeds, output_dir=args.output_dir)
+                take_inference(num=idx + 1, model=model, text=text, speaker_embedding=speaker_embeds, output_dir=args.output_dir)
 
     print(f"Total execution time: {time.time() - start_time:.2f} seconds")
