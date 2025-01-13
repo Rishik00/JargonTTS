@@ -2,7 +2,7 @@ import gc
 import torch
 import time
 import soundfile as sf
-from transformers import pipeline, TTSModel
+from transformers import pipeline
 from datasets import load_dataset
 from contextlib import contextmanager
 
