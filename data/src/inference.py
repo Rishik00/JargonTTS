@@ -8,6 +8,14 @@ from transformers import pipeline
 from datasets import load_dataset
 from contextlib import contextmanager
 
+parser = argparse.ArgumentParser(description="Text-to-Speech CLI Application")
+parser.add_argument("--model", type=str, required=True, help="Model name (e.g., 'microsoft/speecht5_tts')")
+parser.add_argument("--text-file", type=str, required=True, help="Path to the text file for TTS synthesis")
+parser.add_argument("--output-dir", type=str, default=".", help="Directory to save the generated audio file")
+parser.add_argument("--speaker-index", type=int, default=0, help="Index of the speaker embedding to use")
+parser.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu", help="Device to run inference on ('cuda' or 'cpu')")
+args = parser.parse_args()
+
 @contextmanager
 def manage_memory():
     try:
@@ -62,14 +70,6 @@ def take_inference(num: int, model, text: str, speaker_embedding, output_dir: st
     get_memory_usage()
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Text-to-Speech CLI Application")
-    parser.add_argument("--model", type=str, required=True, help="Model name (e.g., 'microsoft/speecht5_tts')")
-    parser.add_argument("--text-file", type=str, required=True, help="Path to the text file for TTS synthesis")
-    parser.add_argument("--output-dir", type=str, default=".", help="Directory to save the generated audio file")
-    parser.add_argument("--speaker-index", type=int, default=0, help="Index of the speaker embedding to use")
-    parser.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu", help="Device to run inference on ('cuda' or 'cpu')")
-    args = parser.parse_args()
-
     start_time = time.time()
 
     # Optional: Add a check if the file exists

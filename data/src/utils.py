@@ -1,5 +1,6 @@
 import os
 import pymupdf
+import argparse
 import requests
 from groq import Groq
 from dotenv import load_dotenv
@@ -63,11 +64,8 @@ def parse_with_groq(text: str, system_prompt: str) -> List[Tuple[str, str]]:
         temperature=0.2,
     )
     jargon_response = chat_completion.choices[0].message.content
-    # print(jargon_response, type(jargon_response), jargon_response.split(','))
 
     jargon_pairs = list(set(jargon_response.strip().split(',')))
-    print(f'checking here: {jargon_pairs}')
-
     return jargon_pairs
 
 def main(db_path: str, url: str, output_file: str):
@@ -86,23 +84,21 @@ def main(db_path: str, url: str, output_file: str):
     for i, chunk in enumerate(text_chunks):
         print(f"Processing chunk {i + 1}/{len(text_chunks)}...")
         jargon_pairs = parse_with_groq(chunk, system_prompt)
-        print(jargon_pairs)
-
-        # terms = [pair[0].strip()  if isinstance(pair, tuple) else pair.strip() for pair in jargon_pairs]
         db.add(jargon_pairs)
-
-    print("Final fetch from database:")
-    print(db.fetch(limit=5))  # Fetch and display a few rows for verification
     db.close()
 
-
 if __name__ == "__main__":
-    # paper_link: str = "https://arxiv.org/pdf/2410.05258#page=13&zoom=100,144,445"
-    paper_link: str = "https://arxiv.org/pdf/1402.4283"
+    parser = argparse.ArgumentParser(description="Text-to-Speech CLI Application")
+    parser.add_argument("--path", type=str, required=True, help="Path to the model (e.g., 'microsoft/speecht5_tts')")
+    parser.add_argument("--url", type=str, required=True, help="Path to the text file for TTS synthesis")
+    parser.add_argument("--output-file", type=str, default="output.wav", help="Path to save the generated audio file")
+    parser.add_argument("--db-path", type=str, default="../audio_files/jargon_db.db", help="Path to the speaker embedding database")
+    parser.add_argument("--db-name", type=str, default="default", help="Name of the speaker embedding to use")
+    args = parser.parse_args()
 
-    db_relative_path = r'..\audio_files\jargon_db.db'  # Relative path from target_dir
-    db_path = os.path.abspath(db_relative_path)  # Convert to absolute path
-    output_file = "difftrans.pdf"
+    # Validate paths
+    db_path_absolute = os.path.abspath(args.db_path)
+    print("Database path (absolute):", db_path_absolute)
 
-    print("Database path:", db_path)
-    main(db_path=db_path, url=paper_link, output_file=output_file)
+    # Call the main function
+    main(db_path=db_path_absolute, url=args.url, output_file=args.output_file)
