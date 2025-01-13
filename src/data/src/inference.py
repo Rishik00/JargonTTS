@@ -2,7 +2,7 @@ import gc
 import torch
 import time
 import soundfile as sf
-from transformers import pipeline
+from transformers import pipeline, TTSModel
 from datasets import load_dataset
 from contextlib import contextmanager
 
@@ -44,7 +44,7 @@ def take_inference(num: int, model, text: str, speaker_embedding, output_dir: st
     
     speech = model(
         text,
-        speaker_embeddings=speaker_embedding
+        forward_params = {"speaker_embeddings": speaker_embedding}
     )
 
     if speech:
