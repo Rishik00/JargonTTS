@@ -62,11 +62,13 @@ def parse_with_groq(text: str, system_prompt: str) -> List[Tuple[str, str]]:
         max_tokens=1000,
         temperature=0.2,
     )
-    jargon_response = chat_completion.choices[0].message.content.strip().split('\n')
-    jargon_pairs = [tuple(line.split(':')) for line in jargon_response if ':' in line]
+    jargon_response = chat_completion.choices[0].message.content
+    # print(jargon_response, type(jargon_response), jargon_response.split(','))
+
+    jargon_pairs = list(set(jargon_response.strip().split(',')))
+    print(f'checking here: {jargon_pairs}')
 
     return jargon_pairs
-
 
 def main(db_path: str, url: str, output_file: str):
     """Main function to process the PDF and extract jargon."""
@@ -84,9 +86,10 @@ def main(db_path: str, url: str, output_file: str):
     for i, chunk in enumerate(text_chunks):
         print(f"Processing chunk {i + 1}/{len(text_chunks)}...")
         jargon_pairs = parse_with_groq(chunk, system_prompt)
+        print(jargon_pairs)
 
-        terms = [pair[0].strip() if isinstance(pair, tuple) else pair.strip() for pair in jargon_pairs]
-        db.add(terms)
+        # terms = [pair[0].strip()  if isinstance(pair, tuple) else pair.strip() for pair in jargon_pairs]
+        db.add(jargon_pairs)
 
     print("Final fetch from database:")
     print(db.fetch(limit=5))  # Fetch and display a few rows for verification

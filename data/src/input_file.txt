@@ -1,2 +1,190 @@
-Hello world
-Nerual network
+ data characteristics
+ nonparametric
+ class label
+ supervised
+ research direction
+ stream data
+ data mining
+ chronological
+ updated continuously
+ search
+ time series
+ dimension reduction
+ similarity
+ incremental
+discretization technique
+ observations
+ preprocessing step
+ segmentation
+ temporal data
+ performance improvement
+ group
+ timely intervals.
+ high dimensions
+ continuous nature
+ numeric nature
+ temporal order
+ class label
+ n-dimensional continuous instance space
+ data mining
+ supervised methods
+ unsupervised methods
+ instance space
+ static data
+ continuous data
+ class labels
+ temporal order.
+ cut points
+ static discretization methods
+ historical data values
+ splitting methods
+discretization
+ temporal data
+ discrete representation
+ knowledge retrieval
+ dynamic methods
+ subintervals
+ global methods
+ memory usage
+ localized regions
+ merging method
+ classification
+ features
+ original data set
+ incremental methods
+ recursively
+ Equal Frequency Discretization (EFD)
+ unsupervised discretization
+ bin boundaries
+ data mining
+ data points
+ information loss
+ attribute
+ discrete valued series
+ states
+ SAX
+ time series
+ outliers
+ Equal Width Discretization (EWD)
+ interval size.
+ cut points
+ parametric method
+ time series data
+ supervised discretization
+ symbolic aggregate approximation
+ dimensionality reduction
+ K-means Clustering
+ Frequency Dynamic Interval Class (FDIC)
+ sliding window
+ piecewise aggregate approximation
+discrete representation
+ PAA
+ dynamic time warping
+ data segments
+ temporal order
+ original data set
+ data characteristics
+ temporal data discretization
+ centroids
+ data points
+ data mining techniques
+ image histogram discretization
+ discretization process
+ two steps
+ EFD methods
+ grouped together.
+ data point assignment
+ sensitivity of the clustering process
+ mean value
+ natural groups
+ education choice
+ discretized attribute
+ Euclidean distance measure
+equal-frequency algorithm
+ EWD methods
+ clustering algorithm
+ static method
+ unsupervised and parametric method
+ K-means clustering
+ k bins
+ random choice
+ minimum and maximum values
+ sorted data values
+ adjacent internal values
+
+ data grouping
+ frequency of values
+ minimum threshold
+ threshold
+ temporal data characteristics
+ interdependencies
+ labeled data
+ means distribution
+ SNN clustering
+ uncertainty
+ recursive.
+ data instances
+ natural grouping
+ value range
+ class features
+ unknown class
+ supervised discretization
+ pseudo-class
+ partition
+discretization
+ discretized feature variable
+ Euclidean distance metric
+ clustering
+ interval classes
+ unlabeled data
+ class variable
+ K-means clustering
+ conditioned on
+ SV-kNNC algorithm
+ entropy
+ Class-Attribute Contingency Coefficient
+ entropy-based discretization
+ cut point
+ Clustering-based discretization
+ supervised
+ drawbacks
+ discretization
+ interdependence
+ unsupervised
+ limitation
+ SAX
+ continuous data
+ real valued data sets
+ continuous streaming data
+ data preprocessing
+temporal data
+ incremental approach
+ pseudo-class
+ intervals
+ Top Down
+ quality
+ top-down
+ nonparametric automatic discretization approach
+ Class Attribute Contingency Coefficient Discretization (CACC)
+ K-Means
+ EFD
+ Bottom Up.
+ maximum CACC value
+ EWD
+ temporal order
+ Extended-SAX
+ Fast-SAX
+ FDIC
+ need of discretization
+ supervised discretization techniques
+ Vol.
+ unsupervised discretization techniques
+ International Journal of Advances in Science and Technology
+ Engineering Applications of Artificial Intelligence
+time series data
+ time series mining
+deep learning
+ Statistics
+ discretization algorithm
+ Class-Attribute Contingency Coefficient
+ Probability
