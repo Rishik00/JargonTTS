@@ -1,0 +1,20 @@
+# Sound transformations info
+
+# model params
+embedding_size: 256
+encoder_emb_size: 512
+dim_feedforward: 1024
+
+postnet_embedding: 1024
+encoder_kernel_dim: 3
+postnet_kernel_dim: 5
+
+batch_size: 32
+grad_clip: 1.0
+lr: 2*1e-4
+rgate: 1.0
+
+log_step: 1000
+test_step: 1000
+total_steps: 5000
+
